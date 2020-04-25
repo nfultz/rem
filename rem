@@ -1,0 +1,46 @@
+#! /bin/bash
+exec 2>/dev/null
+TZ=America/Los_Angeles
+trap "vim '+ normal GzMlA' ${BASH_SOURCE[0]}" EXIT
+! grep -q "Reminders for .*day, $(date +%F) (today)" ${BASH_SOURCE[0]} && \
+  remind -f - << EOF  | LC_ALL=C sort  >> ${BASH_SOURCE[0]}
+BANNER # Reminders for %w, %y-%t-%r%o: {{{2
+
+## Next Actions {{{1
+
+### Recurring Meetings {{{1
+
+### Bills {{{1
+
+### Business {{{1
+
+### Taxes {{{2
+REM          Apr 15 +7	MSG ***** &Taxes Filing Deadline%
+REM          Apr 15 +7	MSG ***** &Taxes Q1 Est%
+REM          Jun 15 +7	MSG ***** &Taxes Q2 Est%
+REM          Sep 15 +7	MSG ***** &Taxes Q3 Est%
+REM          Jan 15 +7	MSG ***** &Taxes Q4 Est (or file by 2/1)%
+
+### Dates {{{1
+REM Tue	MSG 17:00 Taco Tuesday%
+REM Fri	MSG 17:00 Date Night%
+
+### Chores {{{1
+
+### Tickler {{{1
+
+###
+REM               1	MSG ????? Scan Volunteer opportunities%
+
+### Meetups / Conferences {{{1
+
+__EOF__
+
+## Projects {{{1
+
+## Someday / Maybe {{{1
+
+
+## Notes {{{1
+
+# Reminders for Saturday, 2020-04-25 (today): {{{2
